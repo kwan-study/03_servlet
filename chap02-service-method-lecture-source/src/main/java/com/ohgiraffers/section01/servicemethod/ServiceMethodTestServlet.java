@@ -22,5 +22,21 @@ public class ServiceMethodTestServlet extends HttpServlet {
 
         String httpMethod = httpRequest.getMethod();
         System.out.println("요청 방식: " + httpMethod);
+
+        if ("GET".equals(httpMethod)) {
+            doGet(httpRequest, httpResponse);
+        } else if ("POST".equals(httpMethod)) {
+            doPost(httpRequest, httpResponse);
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("GET 요청을 처리할 메소드 호출 중...");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("POST 요청을 처리할 메소드 호출 중...");
     }
 }
